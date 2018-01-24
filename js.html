@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>
+        <form>
+            <h3>
+                <p>Username <input id="username" name="username" type="text" placeholder="Enter Username" onblur="cusername()">
+                    <br/>
+                    <div id="namemsg"></div>
+                </p>
+            </h3>
+            <h3>
+                <p>Password <input type="password" name="password" id="password" placeholder="Enter password" onblur="cpassword()">
+                    <br/>
+                    <div id="passmsg"></div>
+                </p>
+            </h3>
+            <h3>
+                <p>Email <input id="Email" name="Email" type="text" placeholder="Enter Email" onblur="cemail()">
+                    <br/>
+                    <div id="mailmsg"></div>
+                </p>
+            </h3>
+            <h3>
+                <p>Age <input id="Age" name="Age" type="number" placeholder="Enter Age" onblur="cage()">
+                    <br/>
+                    <div id="agemsg"></div>
+                </p>
+            </h3>
+            <div class="button">
+                <input type="Submit" onclick="check()">
+                <input type="reset">
+            </div>
+        </form>
+    </p>
+</body>
+<script>
+    function check() {
+        var name = document.getElementById("username").value;
+        var pass = document.getElementById("password").value;
+        var mail = document.getElementById("Email").value;
+        var age = document.getElementById("Age").value;
+        if (name ===""||pass===""||mail===""||age==="")
+        {
+            alert("Please fill data correctly");
+        }
+        else
+        {
+            alert("Success");
+        }
+    }
+    function cusername() {
+        var name=document.getElementById("username").value;
+                      if(name==="")
+                {
+                    document.getElementById("namemsg").innerHTML="Username cannot be empty";
+                
+                    
+                }
+                else if(name.length<3)
+                {
+                    document.getElementById("namemsg").innerHTML="Username should contain minimum 3 characters";
+                }
+                else
+                {
+                    document.getElementById("namemsg").innerHTML="";
+                }
+            return true;
+}
+    function cpassword() {
+
+        var pass = document.getElementById("password").value;
+        if (pass ==="") {
+            document.getElementById("passmsg").innerHTML = "password field is empty";
+            return true;
+        } else if (pass.length <= 6) {
+            document.getElementById("passmsg").innerHTML = "password field must contain 6 characters";
+            return true;
+        } else if (pass.length >= 6) {
+            var n = 0,
+                c = 0,
+                l, i = 0;
+            l = pass.length;
+            for (i = 0; i < l; i++) {
+                if (pass.charAt(i) >= '0' && pass.charAt(i) <= '9')
+                    n++;
+                if (pass.charAt(i) >= 'a' && pass.charAt(i) <= 'z')
+                    c++;
+                if (pass.charAt(i) >= 'A' && pass.charAt(i) <= 'Z')
+                    c++;
+                if (n == 0 || c == 0) {
+                    document.getElementById("passmsg").innerHTML = "password must contains both number and alphabets";
+                } else
+                    document.getElementById("passmsg").innerHTML = "";
+            }
+        }
+    }
+
+    function cemail() {
+        var email = document.getElementById("Email").value;
+        if(email==="")
+        {
+            document.getElementById("mailmsg").innerHTML="Email cannot be left empty";
+        }
+        else if(email.indexOf("@")>-1&&email.indexOf(".")>-1)
+                {
+                    document.getElementById("mailmsg").innerHTML="";
+                }
+                else
+                {
+                document.getElementById("mailmsg").innerHTML="Please enter correct mail id";  
+                }
+                return true;
+
+    }
+
+    function cage() {
+        var age=document.getElementById("Age").value;
+        if(age>=10&&age<90){
+                document.getElementById("agemsg").innerHTML="";
+                }
+                else
+                {
+                    document.getElementById("agemsg").innerHTML="Age should be between 10 and 90";  
+            }
+            return true;
+    }
+</script>
+
+
+</html>
